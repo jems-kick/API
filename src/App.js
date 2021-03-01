@@ -1,16 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Formate from './components/Formate'
-import View from './components/View'
-
+import API from './components/Apitako';
 
 class App extends React.Component {
   render(){
     return(
       <Router>
       <div>
-        <Route path='/view' exact component={View}></Route>
-        <Route path='/submit' component={Formate}></Route>
+        <Route path='/' component={API}></Route>
       </div>
       </Router>
     )

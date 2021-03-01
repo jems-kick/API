@@ -1,0 +1,18 @@
+.users {
+    text-align: left;
+    padding-left: 70px;
+    padding-right: 0px;
+    margin: 40px 20px;
+    display: inline-table;
+    width: fit-content;
+  }
+  .users div {
+    padding: 50px;
+    margin: 10px;
+    border-radius: 15px;
+    width:fit-content;
+  }
+
+.p {
+  font-weight: bold;
+}
