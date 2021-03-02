@@ -69,7 +69,7 @@ class API extends React.Component {
                         <input type="text" placeholder="Enetr URL" onChange={this.onUrlChnagehendler}></input>
                     </strong>
                     <div className="btn">
-                        <button className="button" onClick={this.AppEnginehendler}>Submite</button>
+                        <button className="button" onClick={this.AppEnginehendler}>Submit</button>
                     </div>
                     <div className="users">
                         {ForData}
