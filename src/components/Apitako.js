@@ -47,14 +47,12 @@ class API extends React.Component {
             result: [],
         })
         const userdata = await this.getUserData();
-        if (userdata) {
-            const data = userdata.data.scans
+        const data = userdata.data.scans
+        this.setState({
+            data: data,
+            result: data,
+        })
 
-            this.setState({
-                data: data,
-                result: data,
-            })
-        }
     }
 
     onUrlChnagehendler = (event) => {
