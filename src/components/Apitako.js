@@ -27,8 +27,13 @@ class API extends React.Component {
                     params:
                     {
                         'apikey': 'ff02e67ab0c13c9967eb18f2d685a16e2ec6f064b3ed8d7a7d76d5d586f201d5',
-                        'resource': this.state.url
-                    }
+                        'resource': this.state.url,
+                    },
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Access-Control-Allow-Origin': 'http://localhost:3000*',
+                        'Access-Control-Allow-Methods': '*'
+                    },
                 })
             return data
         } catch (err) {
@@ -42,12 +47,14 @@ class API extends React.Component {
             result: [],
         })
         const userdata = await this.getUserData();
-        const data = userdata.data.scans
+        if (userdata) {
+            const data = userdata.data.scans
 
-        this.setState({
-            data: data,
-            result: data,
-        })
+            this.setState({
+                data: data,
+                result: data,
+            })
+        }
     }
 
     onUrlChnagehendler = (event) => {

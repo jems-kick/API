@@ -34,7 +34,7 @@ function View(props) {
     if (props.data) {
         sitename = Object.keys(props.data).map((key) => {
             if (props.result[key].detected) {
-                if (props.result[key].result != 'clean site') {
+                if (props.result[key].result !== 'clean site') {
                     return (
                         sitename =
                         <div key={key} style={red} className="users">
@@ -51,7 +51,7 @@ function View(props) {
                     )
                 }
             } else {
-                if (props.result[key].result != 'clean site') {
+                if (props.result[key].result !== 'clean site') {
                     return (
                         sitename =
                         <div key={key} style={yellow} className="users">
