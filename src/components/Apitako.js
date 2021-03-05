@@ -28,12 +28,7 @@ class API extends React.Component {
                     {
                         'apikey': 'ff02e67ab0c13c9967eb18f2d685a16e2ec6f064b3ed8d7a7d76d5d586f201d5',
                         'resource': this.state.url,
-                    },
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Access-Control-Allow-Origin': 'http://localhost:3000*',
-                        'Access-Control-Allow-Methods': '*'
-                    },
+                    }
                 })
             return data
         } catch (err) {
