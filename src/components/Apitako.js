@@ -17,6 +17,7 @@ class API extends React.Component {
         this.state = {
             data: [],
             result: [],
+            total: '',
             url: '',
         }
     }
@@ -46,7 +47,7 @@ class API extends React.Component {
         this.setState({
             url: ''
         })
-        setTimeout(() => { this.getUserData() }, 4000);
+        setTimeout(() => { this.getUserData() }, 10000);
     }
 
     onUrlChnagehendler = (event) => {
