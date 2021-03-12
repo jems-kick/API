@@ -6,6 +6,7 @@ import '../components_style/box.css';
 import Radium, { StyleRoot } from 'radium';
 import View from "../components/Render";
 
+
 class API extends React.Component {
     constructor(props) {
         super(props);
@@ -16,38 +17,36 @@ class API extends React.Component {
         this.state = {
             data: [],
             result: [],
+            url: '',
         }
     }
 
     getUserData = async () => {
-        try {
-            const data = await axios.get(
-                "https://www.virustotal.com/vtapi/v2/url/report",
-                {
-                    params:
-                    {
-                        'apikey': 'ff02e67ab0c13c9967eb18f2d685a16e2ec6f064b3ed8d7a7d76d5d586f201d5',
-                        'resource': this.state.url,
-                    }
-                })
-            return data
-        } catch (err) {
-            console.log(err)
+        const data = await axios.get("https://virus-detected.herokuapp.com/")
+        if (data.data) {
+            const dataa = data.data.scans
+            this.setState({
+                data: dataa,
+                result: dataa,
+            })
+        }
+        else {
+            this.getUserData()
         }
     }
 
-    async AppEnginehendler() {
+    AppEnginehendler() {
         this.setState({
             data: [],
             result: [],
         })
-        const userdata = await this.getUserData();
-        const data = userdata.data.scans
+        const url = this.state.url
+        axios.post("https://virus-detected.herokuapp.com/cors", { body: url })
+        console.log(url)
         this.setState({
-            data: data,
-            result: data,
+            url: ''
         })
-
+        setTimeout(() => { this.getUserData() }, 4000);
     }
 
     onUrlChnagehendler = (event) => {
@@ -57,10 +56,12 @@ class API extends React.Component {
     }
 
     render() {
-        const ForData = <View
-            data={this.state.data}
-            result={this.state.result}
-        ></View>
+        if (this.state.data) {
+            var ForData = <View
+                data={this.state.data}
+                result={this.state.result}
+            ></View>
+        }
 
         return (
             <StyleRoot>

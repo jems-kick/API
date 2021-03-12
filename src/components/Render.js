@@ -1,4 +1,6 @@
 import React from 'react';
+import Zoom from "react-reveal/Zoom";
+import Flip from "react-reveal/Flip";
 
 function View(props) {
     const green =
@@ -11,7 +13,7 @@ function View(props) {
         textAlign: "center"
     }
     const red = {
-        background: 'red',
+        background: '#E50305',
         paddingBottom: '0px',
         paddingTop: '0px',
         fontWeight: 'bold',
@@ -19,6 +21,14 @@ function View(props) {
     }
     const yellow = {
         background: 'yellow',
+        paddingBottom: '0px',
+        paddingTop: '0px',
+        fontWeight: 'bold',
+        textAlign: "center"
+    }
+
+    const blue = {
+        background: '#2C5E8D',
         paddingBottom: '0px',
         paddingTop: '0px',
         fontWeight: 'bold',
@@ -37,55 +47,84 @@ function View(props) {
                 if (props.result[key].result !== 'clean site') {
                     return (
                         sitename =
-                        <div key={key} style={red} className="users">
-                            <h3 style={font}>
-                                {key}
-                            </h3>
-                            <p>
-                                Result : {props.result[key].result}
-                            </p>
-                            <p>
-                                Detected : {props.result[key].detected ? "Yes" : "No"}
-                            </p>
-                        </div>
+                        <Zoom>
+                            <div key={key} style={red} className="users">
+                                <h3 style={font}>
+                                    {key}
+                                </h3>
+                                <p>
+                                    Result : {props.result[key].result}
+                                </p>
+                                <p>
+                                    Detected : {props.result[key].detected ? "Yes" : "No"}
+                                </p>
+                            </div>
+                        </Zoom>
                     )
                 }
             } else {
                 if (props.result[key].result !== 'clean site') {
-                    return (
-                        sitename =
-                        <div key={key} style={yellow} className="users">
-                            <h3 style={font}>
-                                {key}
-                            </h3>
-                            <p>
-                                Result : {props.result[key].result}
-                            </p>
-                            <p>
-                                Detected : {props.result[key].detected ? "Yes" : "No"}
-                            </p>
-                        </div>
-                    )
+                    if (props.result[key].result == 'suspicious site') {
+                        return (
+                            sitename =
+                            <Zoom>
+                                <div key={key} style={blue} className="users">
+
+                                    <h3 style={font}>
+                                        {key}
+                                    </h3>
+                                    <p>
+                                        Result : {props.result[key].result}
+                                    </p>
+                                    <p>
+                                        Detected : {props.result[key].detected ? "Yes" : "No"}
+                                    </p>
+                                </div>
+                            </Zoom>
+                        )
+                    } else {
+                        return (
+                            sitename =
+                            <Zoom>
+                                <div key={key} style={yellow} className="users">
+
+                                    <h3 style={font}>
+                                        {key}
+                                    </h3>
+                                    <p>
+                                        Result : {props.result[key].result}
+                                    </p>
+                                    <p>
+                                        Detected : {props.result[key].detected ? "Yes" : "No"}
+                                    </p>
+                                </div>
+                            </Zoom>
+                        )
+                    }
+
                 } else {
                     return (
                         sitename =
-                        <div key={key} style={green} className="users">
-                            <h3 style={font}>
-                                {key}
-                            </h3>
-                            <p>
-                                Result : {props.result[key].result}
-                            </p>
-                            <p>
-                                Detected :  {props.result[key].detected ? "Yes" : "No"}
-                            </p>
-                        </div>
+                        <Flip right cascade>
+                            <div key={key} style={green} className="users">
+                                <h3 style={font}>
+                                    {key}
+                                </h3>
+                                <p>
+                                    Result : {props.result[key].result}
+                                </p>
+                                <p>
+                                    Detected :  {props.result[key].detected ? "Yes" : "No"}
+                                </p>
+                            </div>
+                        </Flip>
                     )
                 }
             }
         })
     } else {
         sitename = <div><h1>Loding...</h1></div>
+        View()
     }
     return sitename
 }
