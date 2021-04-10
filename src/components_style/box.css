@@ -1,0 +1,22 @@
+.users {
+    text-align: left;
+    padding-left: 70px;
+    padding-right: 0px;
+    margin: 40px 20px;
+    display: inline-table;
+    width: fit-content;
+  }
+  .users div {
+    padding: 20px;
+    margin: 5px;
+    border-radius: 15px;
+    width:fit-content;
+  }
+
+.users:hover {
+  box-shadow: 0 0 11px rgba(33,33,33,.2);
+  }
+
+.p {
+  font-weight: bold;
+}
