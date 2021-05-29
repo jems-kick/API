@@ -1,7 +1,14 @@
 body {
+	
 	background-position: center center;
 	background-size: cover;
-	background-color: black;
+	background-image: url('https://stealthindustries.net/wp-content/uploads/2016/12/Website-Design-Background-1.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-color: #101010;
+	/**height:max-content;
+	background-position: center;**/
+	background-size: cover;
 }
 
 
@@ -26,15 +33,15 @@ input[type=text] {
 	margin-left: 25%;
 	box-sizing: border-box;
 	border: none;
-	border-bottom: 2px solid #640000;
+	border-bottom: #98FB98;
 	background-color: transparent;
-	color: green;
+	color: white;
 	font-size: 20px;
   }
 
   input[type=text]:focus {
 	width: 50%;
-	color: green;
+	color: whitesmoke;
 	font-size: 20px;
   }
 
@@ -54,7 +61,7 @@ input[type=text] {
   }
 
   ::placeholder {
-	  color: #640000;
+	  color: #98FB98;
 	  font-weight: 900;
 	  font-size: 25px;
   }
@@ -62,7 +69,7 @@ input[type=text] {
   .button {
 	background-color: transparent; /* Green */
 	border: none;
-	color: #640000;
+	color: #98FB98;
 	padding: 15px 32px;
 	text-align: center;
 	text-decoration: none;
@@ -78,12 +85,9 @@ input[type=text] {
 	box-shadow: 1200000px 120px 160px 1600000px rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
   }
 
-  .loading{
-	margin: auto;
-    width: 50%;
-    border: 3px solid green;
-    padding: 10px;
+  .loading {
+	background-position: center center;
+	align-items: center;
+	margin-left: 40%;
+	margin-top: 20%;
   }
-
- 
-    
