@@ -64,7 +64,7 @@ function View(props) {
                 }
             } else {
                 if (props.result[key].result !== 'clean site') {
-                    if (props.result[key].result == 'suspicious site') {
+                    if (props.result[key].result === 'suspicious site') {
                         return (
                             sitename =
                             <Zoom>
@@ -123,7 +123,6 @@ function View(props) {
             }
         })
     } else {
-        sitename = <div><h1>Loding...</h1></div>
         View()
     }
     return sitename

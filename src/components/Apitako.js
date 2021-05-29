@@ -3,8 +3,10 @@ import axios from 'axios';
 import '../components_style/app.css';
 import '../components_style/response.css';
 import '../components_style/box.css';
-import Radium, { StyleRoot } from 'radium';
 import View from "../components/Render";
+import ReactLoading from "react-loading";
+const validator = require('validator')
+
 
 
 class API extends React.Component {
@@ -19,19 +21,26 @@ class API extends React.Component {
             result: [],
             total: '',
             url: '',
+            state: '',
+            isDone: true,
         }
     }
 
     getUserData = async () => {
         const data = await axios.get("https://virus-detected.herokuapp.com/")
-        if (data.data) {
+        if (this.state.url === data.data.resource) {
             const dataa = data.data.scans
             this.setState({
                 data: dataa,
                 result: dataa,
+                isDone: true,
+                url: ''
             })
+            const clean = []
+            axios.post("https://virus-detected.herokuapp.com/", { body: clean })
         }
         else {
+            console.log("run again and again")
             this.getUserData()
         }
     }
@@ -40,14 +49,19 @@ class API extends React.Component {
         this.setState({
             data: [],
             result: [],
+            isDone: false
         })
         const url = this.state.url
-        axios.post("https://virus-detected.herokuapp.com/cors", { body: url })
-        console.log(url)
-        this.setState({
-            url: ''
-        })
-        setTimeout(() => { this.getUserData() }, 10000);
+        if (!validator.isEmpty(this.state.url)) {
+            axios.post("https://virus-detected.herokuapp.com/cors", { body: url })
+            console.log(url)
+            this.getUserData()
+        } else {
+            console.log("Please enter the URL")
+            this.setState({
+                isDone: true
+            })
+        }
     }
 
     onUrlChnagehendler = (event) => {
@@ -64,22 +78,41 @@ class API extends React.Component {
             ></View>
         }
 
+        const style = {
+            margin: "100px"
+        }
+
         return (
-            <StyleRoot>
+            <div>
                 <div className="Center">
                     <strong>
                         <input type="text" placeholder="Enetr URL" onChange={this.onUrlChnagehendler}></input>
                     </strong>
                     <div className="btn">
-                        <button className="button" onClick={this.AppEnginehendler}>Submit</button>
+                        <button className="button" onClick={this.AppEnginehendler}>Submi</button>
                     </div>
-                    <div className="users">
-                        {ForData}
+                    <div>
+                        {
+                            !this.state.isDone
+                                ? (
+                                    <div style={style}>
+                                        <ReactLoading
+                                            type={'balls'}
+                                            color={'#009933'}
+                                            height={50}
+                                        />
+                                    </div>
+                                ) : (
+                                    <div className="users">
+                                        {ForData}
+                                    </div>
+                                )
+                        }
                     </div>
                 </div>
-            </StyleRoot>
+            </div >
         )
     }
 }
 
-export default Radium(API);
+export default API;
