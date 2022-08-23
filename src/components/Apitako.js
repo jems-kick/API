@@ -26,7 +26,7 @@ class API extends React.Component {
     }
 
     getUserData = async () => {
-        const data = axios.get("https://virus-detected.herokuapp.com/")
+        const data = axios.get("https://proxyserver-jemish.herokuapp.com/")
         if (this.state.url === data.data.resource) {
             const dataa = data.data.scans
             this.setState({
@@ -36,7 +36,7 @@ class API extends React.Component {
                 url: ''
             })
             const clean = []
-            axios.post("https://virus-detected.herokuapp.com/", { body: clean })
+            axios.post("https://proxyserver-jemish.herokuapp.com/", { body: clean })
         }
         else {
             console.log("it should run again and again")
@@ -52,7 +52,7 @@ class API extends React.Component {
         })
         const url = this.state.url
         if (!validator.isEmpty(this.state.url)) {
-            axios.post("https://virus-detected.herokuapp.com/cors", { body: url })
+            axios.post("https://proxyserver-jemish.herokuapp.com/cors", { body: url })
             console.log(url)
             this.getUserData()
         } else {
